@@ -31,7 +31,16 @@ int buscaBinaria(int vetor[], int tam, int valor, long* numComparacoes);
 //O retorno das funções de ordenação é o número de comparações
 //entre elementos do vetor
 
+// insertion sort
+void trocar(int *vetor, int a, int b);
+
+int inserir(int *vetor, int a, int b, long *insertionComp);
+
+int auxInsertionSort(int *vetor, int a, int b, long *insertionComp);
+
 long insertionSort(int vetor[], int tam);
+
+
 
 long selectionSort(int vetor[], int tam);
 

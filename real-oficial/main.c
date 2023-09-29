@@ -11,7 +11,7 @@ int main(){
 
 	//Dica: somente é posśivel criar vetores grandes utilizando alocação dinâmica de memória
 	//Veja um exemplo de alocação dinâmica a seguir
-	int tamVetor = 3;
+	int tamVetor = 7;
 	int* vetor = malloc(tamVetor * sizeof(int));
 	if(vetor == NULL){
 		printf("Falha fatal. Impossível alocar memoria.");
@@ -20,9 +20,13 @@ int main(){
 	//Depois de alocado, o vetor pode ser utilizado normalmente
 	//Não esqueça de desalocar no final do programa via free
 		
-	vetor[0] = 1;
-	vetor[1] = 10;
-	vetor[2] = 100;
+	vetor[0] = 121;
+	vetor[1] = 1021;
+	vetor[2] = 13;
+	vetor[3] = 10;
+	vetor[4] = 1030;
+	vetor[5] = 10530;
+	vetor[6] = 1;
 
 	getNome(nome);
 	printf("Trabalho de %s\n", nome);
@@ -32,20 +36,31 @@ int main(){
 	clock_t start, end;//variáveis do tipo clock_t
     double total;
 
+	printf("vetor : \n ");
+	for(int i=0; i < 7; i++){
+		printf("[%d] ", vetor[i]);
+	}
+	printf("\n");
+
+	//--------insertion sort---------
+	printf("insertion sort\n");
 	start = clock();//start recebe o "ciclo" corrente
-	numComp = insertionSort(vetor, 3);
+	numComp = insertionSort(vetor, 7);
 	end = clock();//end recebe o "ciclo" corrente
 	//o tempo total é a diferença dividia pelos ciclos por segundo
 	total = ((double)end - start)/CLOCKS_PER_SEC;
 	printf("Tempo total: %f\n", total);
+	printf("\n");
 
-	numComp = selectionSort(vetor, 3);
-	numComp = mergeSort(vetor, 3);
-	numComp = quickSort(vetor, 3);
-	numComp = heapSort(vetor, 3);
+	//-------------------------------
+
+	numComp = selectionSort(vetor, 7);
+	numComp = mergeSort(vetor, 7);
+	numComp = quickSort(vetor, 7);
+	numComp = heapSort(vetor, 7);
 
 	printf("vetor : \n ");
-	for(int i=0; i < 3; i++){
+	for(int i=0; i < 7; i++){
 		printf("[%d] ", vetor[i]);
 	}
 	printf("\n");
@@ -54,7 +69,7 @@ int main(){
 	printf("\n");
 	printf("busca sequencial\n");
 	printf("buscando o valor : 10 \n");
-	idxBusca = buscaSequencial(vetor, 3, 10, &numComp);
+	idxBusca = buscaSequencial(vetor, 7, 10, &numComp);
 	printf("no indice : %d\n",idxBusca);
 	printf("n de comp : %ld\n",numComp);
 	// ----------------------------
@@ -63,7 +78,7 @@ int main(){
 	printf("\n");
 	printf("busca binaria\n");
 	printf("buscando o valor : 10 \n");
-	idxBusca = buscaBinaria(vetor, 3, 10, &numComp);
+	idxBusca = buscaBinaria(vetor,7, 10, &numComp);
 	printf("no indice : %d\n",idxBusca);
 	printf("n de comp : %ld\n",numComp);
 	// ----------------------------

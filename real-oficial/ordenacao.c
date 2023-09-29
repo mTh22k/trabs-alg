@@ -92,10 +92,49 @@ int auxBuscaBinaria(int v[], int a, int b, int x, long* numComparacoes) {
 
 // -------------------------------------------------------
 
-long insertionSort(int vetor[], int tam){	
-	vetor[0] = 99;
-	return -1;
+
+// ---------------insertion sort----------------------------------------
+
+void trocar(int *vetor, int a, int b){
+	int aux = *(vetor + a);
+	*(vetor + a) = *(vetor + b);
+	*(vetor + b) = aux;
 }
+
+int inserir(int *vetor, int a, int b, long *insertionComp){
+
+	long idxAux = auxBuscaBinaria(vetor, a, b-1, *(vetor+b), insertionComp);
+	int i = b;
+
+	while(i > idxAux+1){
+		trocar(vetor, i, i-1);
+		i--;
+	}
+	return *vetor;
+}
+
+int auxInsertionSort(int *vetor, int a, int b, long *insertionComp){
+
+	if(a >= b)
+		return *vetor;
+
+	auxInsertionSort(vetor, a, b-1, insertionComp);
+	inserir(vetor, a, b, insertionComp);
+	
+	return *vetor;
+}
+
+long insertionSort(int vetor[], int tam){
+	int a = 0;
+	int b = tam;
+	long insertionComp = 0;
+
+	auxInsertionSort(vetor, a, b, &insertionComp);
+
+	return insertionComp;
+}
+
+// ---------------------------------------------------------------------
 
 long selectionSort(int vetor[], int tam){
 	vetor[0] = 99;
