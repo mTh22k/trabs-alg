@@ -34,9 +34,9 @@ int buscaBinaria(int vetor[], int tam, int valor, long* numComparacoes);
 // insertion sort
 void trocar(int *vetor, int a, int b);
 
-int inserir(int *vetor, int a, int b, long *insertionComp);
+void inserir(int *vetor, int a, int b, long *insertionComp);
 
-int auxInsertionSort(int *vetor, int a, int b, long *insertionComp);
+void auxInsertionSort(int *vetor, int a, int b, long *insertionComp);
 
 long insertionSort(int vetor[], int tam);
 

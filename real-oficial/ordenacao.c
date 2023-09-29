@@ -95,33 +95,28 @@ int auxBuscaBinaria(int v[], int a, int b, int x, long* numComparacoes) {
 
 // ---------------insertion sort----------------------------------------
 
-void trocar(int *vetor, int a, int b){
-	int aux = *(vetor + a);
-	*(vetor + a) = *(vetor + b);
-	*(vetor + b) = aux;
+void trocar(int *vetor, int a, int b) {
+    int aux = vetor[a];
+    vetor[a] = vetor[b];
+    vetor[b] = aux;
 }
 
-int inserir(int *vetor, int a, int b, long *insertionComp){
+void inserir(int *vetor, int a, int b, long *insertionComp) {
+    long p = auxBuscaBinaria(vetor, a, b - 1, vetor[b], insertionComp);
+    int i = b - 1;
 
-	long idxAux = auxBuscaBinaria(vetor, a, b-1, *(vetor+b), insertionComp);
-	int i = b;
-
-	while(i > idxAux+1){
-		trocar(vetor, i, i-1);
-		i--;
-	}
-	return *vetor;
+    while (i > p) {
+        trocar(vetor, i, i + 1);
+        i--;
+    }
 }
 
-int auxInsertionSort(int *vetor, int a, int b, long *insertionComp){
+void auxInsertionSort(int *vetor, int a, int b, long *insertionComp) {
+    if (a >= b)
+        return;
 
-	if(a >= b)
-		return *vetor;
-
-	auxInsertionSort(vetor, a, b-1, insertionComp);
-	inserir(vetor, a, b, insertionComp);
-	
-	return *vetor;
+    auxInsertionSort(vetor, a, b - 1, insertionComp);
+    inserir(vetor, a, b, insertionComp);
 }
 
 long insertionSort(int vetor[], int tam){
