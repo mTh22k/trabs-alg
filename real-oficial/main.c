@@ -36,18 +36,18 @@ int main(){
 	printf("\n");
 	encheVetor(vetor, tamVetor);
 	printf("Vetor : \n");
-	// imprimeVetor(vetor,tamVetor);
+	imprimeVetor(vetor,tamVetor);
 	printf("\n");
 	start = clock();//start recebe o "ciclo" corrente
 	numComp = insertionSort(vetor, tamVetor);
 	printf("Vetor ordenado : \n");
-	// imprimeVetor(vetor,tamVetor);
+	imprimeVetor(vetor,tamVetor);
+	printf("\n");
 	printf("n de comp : %ld\n",numComp);
 	end = clock();//end recebe o "ciclo" corrente
 	//o tempo total é a diferença dividia pelos ciclos por segundo
 	total = ((double)end - start)/CLOCKS_PER_SEC;
 	printf("Tempo total: %f\n", total);
-	printf("-------------------------------------------------------------\n");
 
 	printf("\n");
 
@@ -57,18 +57,18 @@ int main(){
 	printf("\n");
 	encheVetor(vetor, tamVetor);
 	printf("Vetor : \n");
-	// imprimeVetor(vetor,tamVetor);
+	imprimeVetor(vetor,tamVetor);
 	printf("\n");
 	start = clock();//start recebe o "ciclo" corrente
 	numComp = selectionSort(vetor, tamVetor);
 	printf("Vetor ordenado : \n");
-	// imprimeVetor(vetor,tamVetor);
+	imprimeVetor(vetor,tamVetor);
+	printf("\n");
 	printf("n de comp : %ld\n",numComp);
 	end = clock();//end recebe o "ciclo" corrente
 	//o tempo total é a diferença dividia pelos ciclos por segundo
 	total = ((double)end - start)/CLOCKS_PER_SEC;
 	printf("Tempo total: %f\n", total);
-	printf("-------------------------------------------------------------\n");
 
 	printf("\n");
 
@@ -78,18 +78,18 @@ int main(){
 	printf("\n");
 	encheVetor(vetor, tamVetor);
 	printf("Vetor : \n");
-	// imprimeVetor(vetor,tamVetor);
+	imprimeVetor(vetor,tamVetor);
 	printf("\n");
 	start = clock();//start recebe o "ciclo" corrente
 	numComp = mergeSort(vetor, tamVetor);
 	printf("Vetor ordenado : \n");
-	// imprimeVetor(vetor,tamVetor);
+	imprimeVetor(vetor,tamVetor);
+	printf("\n");
 	printf("n de comp : %ld\n",numComp);
 	end = clock();//end recebe o "ciclo" corrente
 	//o tempo total é a diferença dividia pelos ciclos por segundo
 	total = ((double)end - start)/CLOCKS_PER_SEC;
 	printf("Tempo total: %f\n", total);
-	printf("-------------------------------------------------------------\n");
 
 	printf("\n");
 
@@ -99,42 +99,46 @@ int main(){
 	printf("\n");
 	encheVetor(vetor, tamVetor);
 	printf("Vetor : \n");
-	// imprimeVetor(vetor,tamVetor);
+	imprimeVetor(vetor,tamVetor);
 	printf("\n");
 	start = clock();//start recebe o "ciclo" corrente
 	numComp = quickSort(vetor, tamVetor);
 	printf("Vetor ordenado : \n");
-	// imprimeVetor(vetor,tamVetor);
+	imprimeVetor(vetor,tamVetor);
+	printf("\n");
 	printf("n de comp : %ld\n",numComp);
 	end = clock();//end recebe o "ciclo" corrente
 	//o tempo total é a diferença dividia pelos ciclos por segundo
 	total = ((double)end - start)/CLOCKS_PER_SEC;
 	printf("Tempo total: %f\n", total);
+
+
+
+
+
 	printf("-------------------------------------------------------------\n");
-
-	// -------------------------------
-	// numComp = heapSort(vetor, 7);
-
+	int numBusca = rand() % 99999;
+	printf("buscar o numero %d : \n",numBusca);
 	//--------busca sequencial---------
 	printf("\n");
 	encheVetor(vetor, tamVetor);
 	printf("Vetor : \n");
-	// imprimeVetor(vetor,tamVetor);
+	imprimeVetor(vetor,tamVetor);
+	printf("\n");
 	printf("busca sequencial\n");
-	printf("buscando o valor : 10 \n");
-	idxBusca = buscaSequencial(vetor, tamVetor, 10, &numComp);
+	idxBusca = buscaSequencial(vetor, tamVetor, numBusca, &numComp);
 	printf("no indice : %d\n",idxBusca);
 	printf("n de comp : %ld\n",numComp);
 	// ----------------------------
 
 	//--------busca binaria---------
 	printf("\n");
-	printf("Vetor : \n");
+	 printf("Vetor : \n");
 	quickSort(vetor, tamVetor);
-	// imprimeVetor(vetor,tamVetor);
+	 imprimeVetor(vetor,tamVetor);
+	printf("\n");
 	printf("busca binaria\n");
-	printf("buscando o valor : 10 \n");
-	idxBusca = buscaBinaria(vetor, tamVetor, 10, &numComp);
+	idxBusca = buscaBinaria(vetor, tamVetor, numBusca, &numComp);
 	printf("no indice : %d\n",idxBusca);
 	printf("n de comp : %ld\n",numComp);
 	// ----------------------------
