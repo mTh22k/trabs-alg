@@ -17,6 +17,9 @@ unsigned int getGRR();
 //Você deve armazenar no ponteiro int* numComparacoes o número de comparações
 //envolvendo elementos do vetor feito pelo seu algoritmo na chamada
 
+void encheVetor(int *vetor, int tam);
+void imprimeVetor(int vetor[], int tam);
+
 //a busca sequencial é a busca ingênua
 int auxBuscaSequencial(int v[], int a, int b, int valor, long *numComparacoes);
 
@@ -40,11 +43,28 @@ void auxInsertionSort(int *vetor, int a, int b, long *insertionComp);
 
 long insertionSort(int vetor[], int tam);
 
-
+// selection sort
+int minimo(int *vetor, int a, int b, long *selectionComp);
 
 long selectionSort(int vetor[], int tam);
 
+void auxSelectionSort(int *vetor, int a, int b, long *selectionComp);
+
+// merge sort
+
+void copiar(int *vetor, int *vetorAux, int a, int b);
+
+void mergir(int *vetor, int *vetorAux, int a, int meio, int b, long *mergeComp);
+
+void auxMergeSort(int *vetor, int vetorAux[], int a, int b, long *mergeComp);
+
 long mergeSort(int vetor[], int tam);
+
+// quick sort
+
+int particiona(int *vetor, int a, int b, long *quickComp);
+
+void auxQuickSort(int *vetor, int a, int b, long *quickComp);
 
 long quickSort(int vetor[], int tam);
 
