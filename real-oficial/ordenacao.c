@@ -19,7 +19,7 @@ unsigned int getGRR()
 void encheVetor(int *vetor, int tam)
 {
 	for (int i = 0; i < tam; ++i)
-		vetor[i] = rand() % 99;
+		vetor[i] = rand() % 99999;
 }
 
 void imprimeVetor(int vetor[], int tam)
@@ -60,7 +60,7 @@ int auxBuscaSequencial(int v[], int a, int b, int valor, long *numComparacoes)
 int buscaSequencial(int vetor[], int tam, int valor, long *numComparacoes)
 {
 	int a = 0;
-	int b = tam;
+	int b = tam - 1;
 	*numComparacoes = 0;
 
 	int res = auxBuscaSequencial(vetor, a, b, valor, numComparacoes);

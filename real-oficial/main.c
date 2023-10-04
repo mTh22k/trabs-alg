@@ -12,7 +12,7 @@ int main()
 
 	// Dica: somente é posśivel criar vetores grandes utilizando alocação dinâmica de memória
 	// Veja um exemplo de alocação dinâmica a seguir
-	int tamVetor = 10;
+	int tamVetor = 100;
 	int *vetor = malloc(tamVetor * sizeof(int));
 	if (vetor == NULL)
 	{
@@ -37,13 +37,13 @@ int main()
 	printf("insertion sort\n");
 	printf("\n");
 	encheVetor(vetor, tamVetor);
-	printf("Vetor : \n");
-	imprimeVetor(vetor, tamVetor);
+	// printf("Vetor : \n");
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	start = clock(); // start recebe o "ciclo" corrente
 	numComp = insertionSort(vetor, tamVetor);
-	printf("Vetor ordenado : \n");
-	imprimeVetor(vetor, tamVetor);
+	// printf("Vetor ordenado : \n");
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	printf("n de comp : %ld\n", numComp);
 	end = clock(); // end recebe o "ciclo" corrente
@@ -58,13 +58,13 @@ int main()
 	printf("selection sort\n");
 	printf("\n");
 	encheVetor(vetor, tamVetor);
-	printf("Vetor : \n");
-	imprimeVetor(vetor, tamVetor);
+	// printf("Vetor : \n");
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
-	start = clock(); // start recebe o "ciclo" corrente
+	start = clock(); // start recebe o "ciclo" correntegit@github.com:mTh22k/trabs-alg.git
 	numComp = selectionSort(vetor, tamVetor);
-	printf("Vetor ordenado : \n");
-	imprimeVetor(vetor, tamVetor);
+	// printf("Vetor ordenado : \n");
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	printf("n de comp : %ld\n", numComp);
 	end = clock(); // end recebe o "ciclo" corrente
@@ -79,13 +79,13 @@ int main()
 	printf("merge sort\n");
 	printf("\n");
 	encheVetor(vetor, tamVetor);
-	printf("Vetor : \n");
-	imprimeVetor(vetor, tamVetor);
+	// printf("Vetor : \n");
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	start = clock(); // start recebe o "ciclo" corrente
 	numComp = mergeSort(vetor, tamVetor);
-	printf("Vetor ordenado : \n");
-	imprimeVetor(vetor, tamVetor);
+	// printf("Vetor ordenado : \n");
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	printf("n de comp : %ld\n", numComp);
 	end = clock(); // end recebe o "ciclo" corrente
@@ -100,13 +100,13 @@ int main()
 	printf("quick sort\n");
 	printf("\n");
 	encheVetor(vetor, tamVetor);
-	printf("Vetor : \n");
-	imprimeVetor(vetor, tamVetor);
+	// printf("Vetor : \n");
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	start = clock(); // start recebe o "ciclo" corrente
 	numComp = quickSort(vetor, tamVetor);
-	printf("Vetor ordenado : \n");
-	imprimeVetor(vetor, tamVetor);
+	// printf("Vetor ordenado : \n");
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	printf("n de comp : %ld\n", numComp);
 	end = clock(); // end recebe o "ciclo" corrente
@@ -115,13 +115,13 @@ int main()
 	printf("Tempo total: %f\n", total);
 
 	printf("-------------------------------------------------------------\n");
-	int numBusca = rand() % 99999;
+	int numBusca = rand() % 999;
 	printf("buscar o numero %d : \n", numBusca);
 	//--------busca sequencial---------
 	printf("\n");
 	encheVetor(vetor, tamVetor);
-	printf("Vetor : \n");
-	imprimeVetor(vetor, tamVetor);
+	// printf("Vetor : \n");
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	printf("busca sequencial\n");
 	idxBusca = buscaSequencial(vetor, tamVetor, numBusca, &numComp);
@@ -133,7 +133,7 @@ int main()
 	printf("\n");
 	printf("Vetor : \n");
 	quickSort(vetor, tamVetor);
-	imprimeVetor(vetor, tamVetor);
+	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	printf("busca binaria\n");
 	idxBusca = buscaBinaria(vetor, tamVetor, numBusca, &numComp);
