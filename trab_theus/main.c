@@ -9,7 +9,9 @@ int main() {
     // char nomeAlg[MAX_CHAR];
     unsigned long numComp = 0;
 
-    int tamVetor = 24;
+	int n = 100;
+
+    int tamVetor = 100;
     int* vetor = (int*)malloc(tamVetor * sizeof(int));
 	unsigned int* vetor_count = (unsigned int*)malloc((tamVetor+1) * sizeof(unsigned int));
 	
@@ -34,7 +36,7 @@ int main() {
     printf("-------------------------------------------------------------\n");
     printf("merge sort\n");
 	printf("\n");
-    encheVetor(vetor, tamVetor);
+    encheVetor(vetor, tamVetor, n);
     printf("Vetor : \n");
 	imprimeVetor(vetor, tamVetor);
     printf("\n");
@@ -56,7 +58,7 @@ int main() {
 	//--------quick sort---------
 	printf("quick sort\n");
 	printf("\n");
-	encheVetor(vetor, tamVetor);
+	encheVetor(vetor, tamVetor, n);
 	printf("Vetor : \n");
 	imprimeVetor(vetor, tamVetor);
 	printf("\n");
@@ -79,7 +81,7 @@ int main() {
 	//--------heap sort---------
 	printf("heap sort\n");
 	printf("\n");
-	encheVetor(vetor, tamVetor);
+	encheVetor(vetor, tamVetor, n);
 	printf("Vetor : \n");
 	imprimeVetor(vetor, tamVetor);
 	printf("\n");
@@ -101,7 +103,7 @@ int main() {
 	//--------tim sort---------
 	printf("tim sort\n");
 	printf("\n");
-	encheVetor(vetor, tamVetor);
+	encheVetor(vetor, tamVetor, n);
 	printf("Vetor : \n");
 	imprimeVetor(vetor, tamVetor);
 	printf("\n");
@@ -121,22 +123,24 @@ int main() {
 
 	printf("-------------------------------------------------------------\n");
 	//--------counting sort---------
-	int k = 10;
+	int k = tamVetor;
 	printf("couting sort\n");
 	printf("\n");
+
 	for (int i = 0; i < tamVetor+1; ++i)
-		vetor_count[i] = rand() % k;
+		vetor_count[i] = rand() % n;
+
 	printf("Vetor : \n");
+
 	for (int i = 0; i < tamVetor+1; i++)
 	{
 		printf("[%d] ", vetor_count[i]);
 	}
+
 	printf("\n");
 	printf("\n");
 	start = clock(); // start recebe o "ciclo" corrente
 	countingSort(vetor_count, tamVetor, k);
-	// printf("Vetor ordenado : \n");
-	// imprimeVetor(vetor_count, tamVetor);
 	printf("\n");
 	end = clock(); // end recebe o "ciclo" corrente
 	// o tempo total é a diferença dividia pelos ciclos por segundo

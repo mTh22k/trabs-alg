@@ -23,10 +23,10 @@ void getNomeAlgoritmoExtra(char nomeAlg[]) {
 unsigned int getGRR() { return 20222541; }
 
 
-void encheVetor(int *vetor, int tam)
+void encheVetor(int *vetor, int tam, int n)
 {
 	for (int i = 0; i < tam; ++i)
-		vetor[i] = rand() % 99;
+		vetor[i] = rand() % n;
 }
 
 void imprimeVetor(int vetor[], int tam)

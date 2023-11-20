@@ -20,7 +20,7 @@ unsigned int getGRR();
 // entre elementos do vetor
 
 
-void encheVetor(int *vetor, int tam);
+void encheVetor(int *vetor, int tam, int n);
 void imprimeVetor(int vetor[], int tam);
 void trocar(int *vetor, int a, int b);
 
