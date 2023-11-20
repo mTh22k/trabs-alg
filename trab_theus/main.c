@@ -11,6 +11,7 @@ int main() {
 
     int tamVetor = 24;
     int* vetor = (int*)malloc(tamVetor * sizeof(int));
+	unsigned int* vetor_count = (unsigned int*)malloc((tamVetor+1) * sizeof(unsigned int));
 	
     if (vetor == NULL) {
         printf("Falha fatal. Impossível alocar memoria.");
@@ -118,8 +119,35 @@ int main() {
 
 	printf("-------------------------------------------------------------\n");
 
+	printf("-------------------------------------------------------------\n");
+	//--------counting sort---------
+	int k = 10;
+	printf("couting sort\n");
+	printf("\n");
+	for (int i = 0; i < tamVetor+1; ++i)
+		vetor_count[i] = rand() % k;
+	printf("Vetor : \n");
+	for (int i = 0; i < tamVetor+1; i++)
+	{
+		printf("[%d] ", vetor_count[i]);
+	}
+	printf("\n");
+	printf("\n");
+	start = clock(); // start recebe o "ciclo" corrente
+	countingSort(vetor_count, tamVetor, k);
+	// printf("Vetor ordenado : \n");
+	// imprimeVetor(vetor_count, tamVetor);
+	printf("\n");
+	end = clock(); // end recebe o "ciclo" corrente
+	// o tempo total é a diferença dividia pelos ciclos por segundo
+	total = ((double)end - start) / CLOCKS_PER_SEC;
+	printf("Tempo total: %f\n", total);
+
+	printf("-------------------------------------------------------------\n");
+
 
     free(vetor);
+	free(vetor_count);
 
     return 0;
 }

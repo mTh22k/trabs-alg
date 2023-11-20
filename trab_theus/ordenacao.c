@@ -344,8 +344,53 @@ unsigned long algoritmoExtra(int vetor[], int tam)
 	return timSort(vetor, tam, &tim_comp);
 }
 
-// ----------------------------------------------------------------
-void countingSort(unsigned int vetor[], int tam, int maxVal) {
-    vetor[0] = 99;
-    return;
+// -------------------------------------------------------COUNTING SORT
+void countingSort(unsigned int vetor[], int tam, int maxVal) 
+{
+
+    int *vetorAux = (int *)malloc((maxVal+1) * sizeof(int));
+	if(vetorAux == NULL)
+    {
+		printf("Falha fatal. Impossível alocar memoria.");
+        return;
+	}
+
+    int* vetorAuxR = (int*)malloc((tam+1) * sizeof(int));
+	if(vetorAuxR == NULL)
+    {
+		printf("Falha fatal. Impossível alocar memoria.");
+        return;
+	}
+
+    for (int i = 0; i <= maxVal; i++) {
+        vetorAux[i] = 0;
+    }
+
+    for(int i = 1; i <= tam; i++)
+    {
+       vetorAux[vetor[i]] = vetorAux[vetor[i]] + 1; 
+    }
+
+    for(int i = 1; i <= maxVal; i++)
+    {
+        vetorAux[i] = vetorAux[i] + vetorAux[i-1];
+    }
+
+
+    for(int i = tam; i >= 1; i--)
+    {
+        vetorAuxR[vetorAux[vetor[i]]] = vetor[i];
+        vetorAux[vetor[i]] = vetorAux[vetor[i]] - 1;
+    }
+
+	printf("Vetor ordenado : \n");
+
+     for(int i = 1; i <= tam; i++) {
+        printf("[%d] ", vetorAuxR[i]);
+	 }
+
+	printf("\n");
+	
+    free(vetorAux);
+    free(vetorAuxR);
 }
