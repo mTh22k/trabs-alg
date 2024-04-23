@@ -3,11 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void getNome(char nome[]) {
-    // substitua por seu nome
-    strncpy(nome, "Matheus Ferreira Marquesini", MAX_CHAR_NOME);
-    nome[MAX_CHAR_NOME - 1] =
-        '\0';  // adicionada terminação manual para caso de overflow
+void getNome(char nome[])
+{
+	// substitua por seu nome
+	strncpy(nome, "Matheus Ferreira Marquesini", MAX_CHAR_NOME);
+	nome[MAX_CHAR_NOME - 1] =
+		'\0'; // adicionada terminação manual para caso de overflow
 }
 
 // a função a seguir deve retornar o seu número de GRR
@@ -38,40 +39,54 @@ void trocar(int *vetor, int a, int b)
 
 // ---------------------busca sequencial-------------------------------------
 
-ssize_t auxBuscaSequencialRec(int v[], int a, int b, int valor, uint64_t* numComparacoes) {
-    if (a > b)
-        return -1;  // Valor não encontrado
+ssize_t auxBuscaSequencialRec(int v[], int a, int b, int valor, uint64_t *numComparacoes)
+{
 
-    if (v[a] == valor) {
-        *numComparacoes += 1;
-        return a;  // Valor encontrado
-    }
+	if (a > b)
+		return -1;
 
-    *numComparacoes += 1;
-    return auxBuscaSequencialRec(v, a + 1, b, valor, numComparacoes);
+	if (v[a] == valor)
+	{
+		*numComparacoes += 1;
+		return a;
+	}
+
+	*numComparacoes += 1;
+	return auxBuscaSequencialRec(v, a + 1, b, valor, numComparacoes);
 }
 
+ssize_t buscaSequencialRec(int vetor[], size_t tam, int valor, uint64_t *numComparacoes)
+{
+	int a = 0;
+	int b = tam - 1;
+	*numComparacoes = 0;
 
-ssize_t buscaSequencialRec(int vetor[], size_t tam, int valor, uint64_t *numComparacoes) {
-    int a = 0;
-    int b = tam - 1;
-    *numComparacoes = 0;
+	int res = auxBuscaSequencialRec(vetor, a, b, valor, numComparacoes);
 
-    int res = auxBuscaSequencialRec(vetor, a, b, valor, numComparacoes);
+	if (res >= 0)
+	{
+		return res;
+	}
 
-    if (res >= 0) {
-        return res;
-    }
-
-    return -1;
+	return -1;
 }
 
-// -------------------------------------------------------
+ssize_t buscaSequencial(int vetor[], size_t tam, int valor, uint64_t *numComparacoes)
+{
 
-ssize_t buscaBinaria(int vetor[], size_t tam, int valor,
-                     uint64_t* numComparacoes) {
-    *numComparacoes = 99;
-    return -1;
+	*numComparacoes = 0;
+
+	for (size_t i = 0; i < tam; i++)
+	{
+		(*numComparacoes)++;
+
+		if (vetor[i] == valor)
+		{
+			return i;
+		}
+	}
+
+	return -1;
 }
 
 // ---------------busca binaria----------------------------------------
@@ -122,43 +137,95 @@ ssize_t auxBuscaBinariaRec(int v[], int a, int b, int x, uint64_t *numComparacoe
 	}
 }
 
-// -------------------------------------------------------
+ssize_t buscaBinaria(int vetor[], size_t tam, int valor, uint64_t *numComparacoes)
+{
 
-uint64_t insertionSort(int vetor[], size_t tam) {
-    vetor[0] = 99;
-    return -1;
+	*numComparacoes = 0;
+	ssize_t a = 0;
+	ssize_t b = tam - 1;
+	ssize_t m;
+
+	while (a <= b)
+	{
+		(*numComparacoes)++;
+
+		m = a + (b - a) / 2;
+
+		if (vetor[m] == valor)
+		{
+			return m;
+		}
+
+		if (vetor[m] > valor)
+		{
+			b = m - 1;
+		}
+		else
+		{
+			a = m + 1;
+		}
+	}
+	return -1;
 }
+
 // ---------------insertion sort----------------------------------------
 
-void inserir(int *vetor, int a, int b, uint64_t *insertionComp) {
-    long p = auxBuscaSequencialRec(vetor, a, b - 1, vetor[b], insertionComp);
-    int i = b - 1;
+void inserir(int *vetor, int a, int b, uint64_t *insertionComp)
+{
+	int chave = vetor[b];
+	int i = b - 1;
 
-    while (i > p) {
-        trocar(vetor, i, i + 1);
-        i--;
-    }
+	while (i >= a && vetor[i] > chave)
+	{
+		vetor[i + 1] = vetor[i];
+		i--;
+		(*insertionComp)++;
+	}
+
+	vetor[i + 1] = chave;
 }
 
-void auxInsertionSortRec(int *vetor, int a, int b, uint64_t *insertionComp) {
-    if (a >= b)
-        return;
+void auxInsertionSortRec(int *vetor, int a, int b, uint64_t *insertionComp)
+{
+	if (a >= b)
+		return;
 
-    auxInsertionSortRec(vetor, a, b - 1, insertionComp);
-    inserir(vetor, a, b, insertionComp);
+	auxInsertionSortRec(vetor, a, b - 1, insertionComp);
+	inserir(vetor, a, b, insertionComp);
 }
 
-uint64_t insertionSortRec(int vetor[], size_t tam) {
-    int a = 0;
-    int b = tam;
-    uint64_t insertionComp = 0;
+uint64_t insertionSortRec(int vetor[], size_t tam)
+{
+	int a = 0;
+	int b = tam;
+	uint64_t insertionComp = 0;
 
-    auxInsertionSortRec(vetor, a, b, &insertionComp);
+	auxInsertionSortRec(vetor, a, b, &insertionComp);
 
-    return insertionComp;
+	return insertionComp;
 }
 
-// ---------------------------------------------------------------------
+uint64_t insertionSort(int vetor[], size_t tam)
+{
+	uint64_t insertionComp = 0;
+
+	for (size_t i = 1; i < tam; i++)
+	{
+		int comp = vetor[i];
+		ssize_t j = i - 1;
+
+		while (j >= 0 && vetor[j] > comp)
+		{
+			vetor[j + 1] = vetor[j];
+			j--;
+			insertionComp++;
+		}
+
+		vetor[j + 1] = comp;
+	}
+
+	return insertionComp;
+}
 
 // ------------------------selection sort-------------------------------
 
@@ -203,11 +270,32 @@ uint64_t selectionSortRec(int vetor[], size_t tam)
 	return selectionComp;
 }
 
-uint64_t selectionSort(int vetor[], size_t tam) {
-    vetor[0] = 99;
-    return -1;
-}
+uint64_t selectionSort(int vetor[], size_t tam)
+{
 
+	uint64_t numComparacoes = 0;
+
+	for (size_t i = 0; i < tam - 1; i++)
+	{
+		size_t indice_min = i;
+
+		for (size_t j = i + 1; j < tam; j++)
+		{
+			numComparacoes++;
+			if (vetor[j] < vetor[indice_min])
+			{
+				indice_min = j;
+			}
+		}
+
+		if (indice_min != i)
+		{
+			trocar(vetor, i, indice_min);
+		}
+	}
+
+	return numComparacoes;
+}
 
 // -----------------------merge sort----------------------------------------------
 
@@ -291,5 +379,3 @@ uint64_t mergeSort(int vetor[], size_t tam)
 
 	return mergeComp;
 }
-
-// ---------------------------------------------------------------------

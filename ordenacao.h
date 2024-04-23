@@ -48,9 +48,7 @@ ssize_t buscaBinaria(int vetor[], size_t tam, int valor,
 // O retorno das funções de ordenação é o número de comparações
 // entre elementos do vetor realizado
 
-
-
-// insertion recursivo
+// insertion 
 
 uint64_t insertionSortRec(int vetor[], size_t tam);
 
@@ -60,21 +58,15 @@ void trocar(int *vetor, int a, int b);
 
 void auxInsertionSortRec(int *vetor, int a, int b, uint64_t *insertionComp);
 
-// insertion interativo
-
 uint64_t insertionSort(int vetor[], size_t tam);
 
-// selection recursivo
-
-uint64_t selectionSortRec(int vetor[], size_t tam);
+// selection 
 
 int minimo(int *vetor, int a, int b, uint64_t *selectionComp);
 
 uint64_t selectionSortRec(int vetor[], size_t tam);
 
 void auxSelectionSortRec(int *vetor, int a, int b, uint64_t *selectionComp);
-
-// selection interativo
 
 uint64_t selectionSort(int vetor[], size_t tam);
 
