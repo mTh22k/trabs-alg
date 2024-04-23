@@ -124,7 +124,7 @@ int main()
 	printf("-------------------------------------------------------------\n");
 	printf("\n");
 
-	int numBusca = rand() % 9;
+	int numBusca = rand() % 99999;
 	printf("buscar o numero %d : \n", numBusca);
 	printf("-------------------------------------------------------------\n");
 
