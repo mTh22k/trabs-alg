@@ -17,7 +17,7 @@ uint32_t getGRR() { return 20222541; }
 void encheVetor(int *vetor, int tam)
 {
 	for (int i = 0; i < tam; ++i)
-		vetor[i] = rand() % 99999;
+		vetor[i] = rand() % 9;
 }
 
 void imprimeVetor(int vetor[], int tam)
@@ -197,7 +197,7 @@ void auxInsertionSortRec(int *vetor, int a, int b, uint64_t *insertionComp)
 uint64_t insertionSortRec(int vetor[], size_t tam)
 {
 	int a = 0;
-	int b = tam;
+	int b = tam - 1;
 	uint64_t insertionComp = 0;
 
 	auxInsertionSortRec(vetor, a, b, &insertionComp);
@@ -362,7 +362,7 @@ uint64_t mergeSort(int vetor[], size_t tam)
 {
 
 	int a = 0;
-	int b = tam;
+	int b = tam - 1;
 	uint64_t mergeComp = 0;
 
 	int *vetorAux = malloc(tam * sizeof(int));

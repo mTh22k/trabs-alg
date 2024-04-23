@@ -15,7 +15,7 @@ int main()
 
 	// Dica: somente é posśivel criar vetores grandes utilizando alocação
 	// dinâmica de memória Veja um exemplo de alocação dinâmica a seguir
-	ssize_t tamVetor = 150000;
+	ssize_t tamVetor = 10;
 	int *vetor = malloc(tamVetor * sizeof(int));
 	if (vetor == NULL)
 	{
