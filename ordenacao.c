@@ -17,7 +17,7 @@ uint32_t getGRR() { return 20222541; }
 void encheVetor(int *vetor, int tam)
 {
 	for (int i = 0; i < tam; ++i)
-		vetor[i] = rand() % 9;
+		vetor[i] = rand() % 99999;
 }
 
 void imprimeVetor(int vetor[], int tam)
