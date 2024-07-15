@@ -1,9 +1,0 @@
-{
-  "files.associations": {
-    "*.embeddedhtml": "html",
-    "stdint.h": "c",
-    "ordenacao.h": "c",
-    "stdlib.h": "c",
-    "string.h": "c"
-  }
-}
