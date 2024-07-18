@@ -238,17 +238,204 @@ void maxHeapfy(int *vetor, int i, int tam, int *heapComp)
 
 // ----------------------------------------------------------------
 
-uint64_t mergeSortSR(int vetor[], size_t tam) {
-    vetor[0] = 99;
-    return -1;
+// ----------------------MERGE SR----------------------------------
+
+uint64_t mergeSortSR(int vetor[], size_t tam) 
+{
+
+	int mergeSRcomp = 0;
+
+    auxMergeSortSR(vetor, tam, &mergeSRcomp);
+    return mergeSRcomp;
+    
 }
+
+void auxMergeSortSR(int vetor[], int tam, int *mergeSRcomp) 
+{
+
+    int tamanho_atual;
+    int inicio_esquerda;
+
+    for (tamanho_atual = 1; tamanho_atual <= tam - 1; tamanho_atual = 2 * tamanho_atual) {
+
+		for (inicio_esquerda = 0; inicio_esquerda < tam - 1; inicio_esquerda += 2 * tamanho_atual) {
+
+			int meio = inicio_esquerda + tamanho_atual - 1;
+			int fim_direita = ((inicio_esquerda + 2 * tamanho_atual - 1) < (tam - 1)) ? (inicio_esquerda + 2 * tamanho_atual - 1) : (tam - 1);
+
+			if (meio >= tam) break; 
+			if (fim_direita >= tam) fim_direita = tam - 1;
+
+			if (meio >= tam - 1) meio = tam - 1;
+				if (fim_direita >= tam) fim_direita = tam - 1;
+
+			if (inicio_esquerda < meio && meio < fim_direita) {
+				mesclar(vetor, inicio_esquerda, meio, fim_direita, mergeSRcomp);
+			}
+		}
+
+	}
+}
+
+
+void mesclar(int vetor[], int inicio, int meio, int fim, int *mergeSRcomp) 
+{
+
+    int i, j, k;
+    int n1 = meio - inicio + 1;
+    int n2 = fim - meio;
+
+	if (n1 <= 0 || n2 <= 0) {
+        fprintf(stderr, "Erro: Tamanhos dos subvetores são inválidos.\n");
+        return;
+    }
+
+    int *Esq = (int *)malloc(n1 * sizeof(int));
+    int *Dir = (int *)malloc(n2 * sizeof(int));
+
+     if (Esq == NULL || Dir == NULL) {
+        fprintf(stderr, "Erro na alocação de memória.\n");
+        free(Esq);
+        free(Dir);
+        exit(EXIT_FAILURE);
+    }
+
+    for (i = 0; i < n1; i++)
+        Esq[i] = vetor[inicio + i];
+    for (j = 0; j < n2; j++)
+        Dir[j] = vetor[meio + 1 + j];
+
+    i = 0;
+    j = 0;
+
+    k = inicio;
+    while (i < n1 && j < n2) {
+    (*mergeSRcomp)++;
+    if (Esq[i] <= Dir[j]) {
+        vetor[k] = Esq[i];
+        i++;
+    } else {
+        vetor[k] = Dir[j];
+        j++;
+    }
+
+    k++;
+
+	}	
+
+	while (i < n1) {
+		vetor[k] = Esq[i];
+		i++;
+		k++;
+	}
+
+	while (j < n2) {
+		vetor[k] = Dir[j];
+		j++;
+		k++;
+	}
+
+	free(Esq);
+    free(Dir);
+
+}
+
+// ----------------------------------------------------------------
+
+// -----------QUICK SR---------------------------------------------
 
 uint64_t quickSortSR(int vetor[], size_t tam) {
-    vetor[0] = 99;
-    return -1;
+
+    int quickSRcomp = 0; 
+
+    auxQuickSortSR(vetor, tam, &quickSRcomp);
+    return quickSRcomp;
 }
 
-uint64_t heapSortSR(int vetor[], size_t tam) {
-    vetor[0] = 99;
-    return -1;
+void auxQuickSortSR(int vetor[], int tamanho, int *quickSRcomp) 
+
+{
+
+    int* pilha = (int*)malloc(tamanho * sizeof(int));
+    if (pilha == NULL) {
+        fprintf(stderr, "Erro na alocação de memória.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int topo = -1;
+
+    pilha[++topo] = 0;
+    pilha[++topo] = tamanho - 1;
+
+    while (topo >= 0) {
+        int alto = pilha[topo--];
+        int baixo = pilha[topo--];
+
+        int p = particiona(vetor, baixo, alto, quickSRcomp);
+
+        if (p - 1 > baixo) {
+            pilha[++topo] = baixo;
+            pilha[++topo] = p - 1;
+        }
+
+        if (p + 1 < alto) {
+            pilha[++topo] = p + 1;
+            pilha[++topo] = alto;
+        }
+    }
+
+    free(pilha);
+}
+
+// ----------------------------------------------------------------
+
+uint64_t heapSortSR(int vetor[], size_t tam) 
+{
+	
+
+	int heapCompSR = 0;
+    auxHeapSort(vetor, tam, &heapCompSR);
+
+    return heapCompSR;
+    
+}
+
+int auxHeapSortSR(int *vetor, int tam, int *heapCompSR) 
+{
+
+    fazerMaxHeap(vetor, tam, heapCompSR);
+
+    for (int i = tam - 1; i > 0; --i) {
+        trocar(vetor, 0, i);
+        maxHeapfy(vetor, 0, i, heapCompSR);
+    }
+
+    return *heapCompSR;
+}
+
+void maxHeapfySR(int *vetor, int i, int tam, int *heapCompSR) 
+{
+
+    int maior = i;
+    int esq, dir;
+
+    while (maior < tam / 2) {
+        esq = 2 * i + 1;
+        dir = 2 * i + 2;
+
+        if (esq < tam && vetor[esq] > vetor[maior])
+            maior = esq;
+
+        if (dir < tam && vetor[dir] > vetor[maior])
+            maior = dir;
+
+        *heapCompSR += 2;
+
+        if (maior != i) {
+            trocar(vetor, i, maior);
+            i = maior;
+        } else {
+            break;
+        }
+    }
 }
