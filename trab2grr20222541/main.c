@@ -4,71 +4,73 @@
 
 #include "ordenacao.h"
 
-int main() {
-    char nome[MAX_CHAR];
-    int numComp;
+int main()
+{
+	char nome[MAX_CHAR];
+	int numComp;
 
-    int tamVetor = 2000000;
-    int n = 2000000;
-    int* vetor = (int*)malloc(tamVetor * sizeof(int));
-    if (vetor == NULL) {
-        printf("Falha fatal. Impossível alocar memoria.");
-        return 1;
-    }
+	int tamVetor = 100;
+	int n = 100;
+	int *vetor = (int *)malloc(tamVetor * sizeof(int));
+	if (vetor == NULL)
+	{
+		printf("Falha fatal. Impossível alocar memoria.");
+		return 1;
+	}
 
-    vetor[0] = 1;
-    vetor[1] = 10;
-    vetor[2] = 12;
+	// vetor[0] = 1;
+	// vetor[1] = 10;
+	// vetor[2] = 12;
 
-    getNome(nome);
-    printf("Trabalho de %s\n", nome);
-    printf("GRR %u\n", getGRR());
+	getNome(nome);
+	printf("Trabalho de %s\n", nome);
+	printf("GRR %u\n", getGRR());
 
-    clock_t start, end; // variáveis do tipo clock_t
+	clock_t start, end; // variáveis do tipo clock_t
 	double total;
 
-    srand(time(NULL));
+	srand(time(NULL));
 
-    printf("-------------------------------------------------------------\n");
-    printf("merge sort\n");
+	printf("-------------------------------------------------------------\n");
+	printf("merge sort\n");
 	printf("\n");
-    encheVetor(vetor, tamVetor, n);
-    printf("Vetor : \n");
+	encheVetor(vetor, tamVetor, n);
+	printf("Vetor : \n");
 	// imprimeVetor(vetor, tamVetor);
-    printf("\n");
-    start = clock();
-    numComp = mergeSort(vetor, tamVetor);
-    printf("Vetor ordenado : \n");
+	printf("\n");
+	start = clock();
+	numComp = mergeSort(vetor, tamVetor);
+	printf("Vetor ordenado : \n");
 	// imprimeVetor(vetor, tamVetor);
-    printf("\n");
+	printf("\n");
 	printf("n de comp : %d\n", numComp);
-    end = clock();
-    total = ((double)end - start) / CLOCKS_PER_SEC;
+	end = clock();
+	total = ((double)end - start) / CLOCKS_PER_SEC;
 	printf("Tempo total: %f\n", total);
 	numComp = 0;
 	printf("\n");
 	printf("-------------------------------------------------------------\n");
 
-    printf("-------------------------------------------------------------\n");
+	printf("-------------------------------------------------------------\n");
 	printf("quick sort\n");
 	printf("\n");
 	encheVetor(vetor, tamVetor, n);
 	printf("Vetor : \n");
 	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
-	start = clock(); 
+	start = clock();
 	numComp = quickSort(vetor, tamVetor);
 	printf("Vetor ordenado : \n");
 	// imprimeVetor(vetor, tamVetor);
 	printf("\n");
 	printf("n de comp : %d\n", numComp);
-	end = clock(); 
+	end = clock();
 	total = ((double)end - start) / CLOCKS_PER_SEC;
 	printf("Tempo total: %f\n", total);
 	numComp = 0;
 	printf("-------------------------------------------------------------\n");
 
-    printf("-------------------------------------------------------------\n");
+	printf("-------------------------------------------------------------\n");
 	printf("heap sort\n");
 	printf("\n");
 	encheVetor(vetor, tamVetor, n);
@@ -87,7 +89,7 @@ int main() {
 	numComp = 0;
 	printf("-------------------------------------------------------------\n");
 
-    printf("-------------------------------------------------------------\n");
+	printf("-------------------------------------------------------------\n");
 	printf("merge sort SR\n");
 	printf("\n");
 	encheVetor(vetor, tamVetor, n);
@@ -106,7 +108,7 @@ int main() {
 	numComp = 0;
 	printf("-------------------------------------------------------------\n");
 
-    printf("-------------------------------------------------------------\n");
+	printf("-------------------------------------------------------------\n");
 	printf("quick sort SR\n");
 	printf("\n");
 	encheVetor(vetor, tamVetor, n);
@@ -125,7 +127,7 @@ int main() {
 	numComp = 0;
 	printf("-------------------------------------------------------------\n");
 
-    printf("-------------------------------------------------------------\n");
+	printf("-------------------------------------------------------------\n");
 	printf("heap sort SR\n");
 	printf("\n");
 	encheVetor(vetor, tamVetor, n);
@@ -144,7 +146,7 @@ int main() {
 	numComp = 0;
 	printf("-------------------------------------------------------------\n");
 
-    free(vetor);
+	free(vetor);
 
-    return 0;
+	return 0;
 }

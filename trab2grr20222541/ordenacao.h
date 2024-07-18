@@ -47,13 +47,12 @@ void fazerMaxHeap(int *vetor, int tam, int *heapComp);
 
 int auxHeapSort(int *vetor, int tam, int *heapComp);
 
-
 // As funções que terminam em SR são "Sem Recursão"
 
 // MERGE SORT SR
 uint64_t mergeSortSR(int vetor[], size_t tam);
 
-void mesclar(int vetor[], int inicio, int meio, int fim, int *mergeSRcomp);
+void mergirSR(int vetor[], int inicio, int meio, int fim, int *mergeSRcomp);
 
 void auxMergeSortSR(int vetor[], int tam, int *mergeSRcomp);
 
@@ -67,4 +66,4 @@ uint64_t heapSortSR(int vetor[], size_t tam);
 
 void maxHeapfySR(int *vetor, int i, int tam, int *heapCompSR);
 
-#endif  // ORDENACAO_H_
+#endif // ORDENACAO_H_
