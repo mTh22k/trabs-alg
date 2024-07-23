@@ -9,8 +9,8 @@ int main()
 	char nome[MAX_CHAR];
 	int numComp;
 
-	int tamVetor = 100;
-	int n = 100;
+	int tamVetor = 1048976;
+	int n = 1048976;
 	int *vetor = (int *)malloc(tamVetor * sizeof(int));
 	if (vetor == NULL)
 	{
